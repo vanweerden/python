@@ -1,5 +1,5 @@
 # Python Scripts
-This is home for short scripts and small Python projects that aren't big enough for a repository of their own.
+This is a home for short Python scripts and small projects that aren't big or important enough to warrant a repository of their own.
 
 This includes:
 * Project Euler
