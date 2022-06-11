@@ -5,6 +5,8 @@ class BingoBoardManager:
     def __init__(self, filename):
         self.number_sequence = []
         self.boards = []
+        self.win_order = []
+        self.scores = []
 
         with open(filename) as f:
             self.raw_data = f.read().splitlines()
@@ -31,15 +33,37 @@ class BingoBoardManager:
                 self.boards.append(new_board)
                 numbers = []
     
-    def get_winning_board_score(self):
-        score = 0
+    def get_board_scores(self):
+        board_count = len(self.boards)
+        self.scores = [0]*board_count
+        self.win_order = [0]*board_count
+        done = [False]*board_count
+        win_counter = 1
+
         for n in self.number_sequence:
-            # mark each board
-            for board in self.boards:
+            for index, board in zip(range(board_count), self.boards):
                 board.mark(n)
-                # return the first board that wins
-                if board.check_for_win():
+                if not done[index] and board.is_winning_board():
                     score = board.calculate_score()
-                    return score
-        else:
-            print("No winning boards found")
+                    self.scores[index] = score
+                    self.win_order[index] = win_counter
+                    win_counter += 1
+                    done[index] = True
+
+    def first_winning_board_score(self):
+        board_count = len(self.boards)
+
+        for index, position in zip(range(board_count), self.win_order):
+            if position == 1:
+                return self.scores[index]
+
+    def last_winning_board_score(self):
+        # return last non-zero score 
+        last_position = len(self.boards)+1
+
+        # iterate backwards starting with board count
+        for position in reversed(range(1, last_position)):
+            # find index of item in win_order that equals current index
+            index = self.win_order.index(position)
+            if self.scores[index] > 0:
+                return self.scores[index]

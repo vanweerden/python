@@ -122,7 +122,7 @@ class TestDay3(unittest.TestCase):
 
         self.assertFalse(bingo_board._winning_column_exists())
 
-    def test_check_for_win_true(self):
+    def test_is_winning_board_true(self):
         numbers = [ 14, 21, 17, 24, 4,
                     10, 16, 15, 9, 19,
                     18, 8, 23, 26, 20,
@@ -133,9 +133,9 @@ class TestDay3(unittest.TestCase):
         for n in [7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24]:
             bingo_board.mark(n)
 
-        self.assertTrue(bingo_board.check_for_win())
+        self.assertTrue(bingo_board.is_winning_board())
 
-    def test_check_for_win_false(self):
+    def test_is_winning_board_false(self):
         numbers = [ 1, 2, 3, 4, 5,
                     2, 3, 4, 5, 6,
                     3, 4, 5, 6, 7,
@@ -146,7 +146,7 @@ class TestDay3(unittest.TestCase):
         bingo_board.mark(2)
         bingo_board.mark(6)
 
-        self.assertFalse(bingo_board.check_for_win())
+        self.assertFalse(bingo_board.is_winning_board())
 
     def test_calculate_score(self):
         numbers = [ 14, 21, 17, 24, 4,

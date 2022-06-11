@@ -26,11 +26,21 @@ class TestDay3(unittest.TestCase):
         self.assertEqual(actual, expected)
 
 
-    def test_get_winning_board_score(self):
+    def test_first_winning_board_score(self):
         bb_manager = BingoBoardManager(self.filename)
+        bb_manager.get_board_scores()
 
-        actual = bb_manager.get_winning_board_score()
+        actual = bb_manager.first_winning_board_score()
         expected = 4512
+
+        self.assertEqual(actual, expected)
+
+    def test_last_winning_board(self):
+        bb_manager = BingoBoardManager(self.filename)
+        bb_manager.get_board_scores()
+
+        actual = bb_manager.last_winning_board_score()
+        expected = 1924
 
         self.assertEqual(actual, expected)
 

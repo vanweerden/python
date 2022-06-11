@@ -32,7 +32,7 @@ class BingoBoard:
                 if self.board_matrix[i][j] == n:
                     self.marked_matrix[i][j] = True
 
-    def check_for_win(self):
+    def is_winning_board(self):
         return self._winning_row_exists() or self._winning_column_exists()
 
     def _winning_row_exists(self):
