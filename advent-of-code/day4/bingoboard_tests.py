@@ -1,7 +1,7 @@
 import unittest
 from bingoboard import BingoBoard
 
-class TestDay3(unittest.TestCase):
+class TestDay4(unittest.TestCase):
     test_numbers = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
     expected_row_count = BingoBoard.row_count
     expected_column_count = BingoBoard.column_count
